@@ -206,7 +206,7 @@ android {
             resValue "string", "app_name", "AnotherTSProject Dev"
             applicationIdSuffix ".dev"
         }
-        staging {
+        stagingRelease {
             signingConfig signingConfigs.staging
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
