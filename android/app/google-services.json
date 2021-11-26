@@ -1,0 +1,118 @@
+{
+  "project_info": {
+    "project_number": "946858042923",
+    "project_id": "pushnotisample-d1abc",
+    "storage_bucket": "pushnotisample-d1abc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946858042923:android:95a491109b3fb0a8b26c6e",
+        "android_client_info": {
+          "package_name": "com.anothertsproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946858042923-4naieefpmhteefic9tbes86fk7dd68cr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA13472KoYmIjwQRAXC8gky1zOcpGvZuP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946858042923-4naieefpmhteefic9tbes86fk7dd68cr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "946858042923-d4a7rs85dc7v6jf8ov9hfdg7rgpifusn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anothertsproject.dev"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946858042923:android:a88cde269fa8eb26b26c6e",
+        "android_client_info": {
+          "package_name": "com.anothertsproject.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946858042923-4naieefpmhteefic9tbes86fk7dd68cr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA13472KoYmIjwQRAXC8gky1zOcpGvZuP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946858042923-4naieefpmhteefic9tbes86fk7dd68cr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "946858042923-d4a7rs85dc7v6jf8ov9hfdg7rgpifusn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anothertsproject.dev"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946858042923:android:53f9e2ac51232f99b26c6e",
+        "android_client_info": {
+          "package_name": "com.anothertsproject.staging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946858042923-4naieefpmhteefic9tbes86fk7dd68cr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA13472KoYmIjwQRAXC8gky1zOcpGvZuP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946858042923-4naieefpmhteefic9tbes86fk7dd68cr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "946858042923-d4a7rs85dc7v6jf8ov9hfdg7rgpifusn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anothertsproject.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
