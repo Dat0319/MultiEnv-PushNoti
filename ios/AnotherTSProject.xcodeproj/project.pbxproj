@@ -14,6 +14,7 @@
 		6172F2D35A4C3AA820D92908 /* libPods-AnotherTSProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-AnotherTSProject.a */; };
 		7EF68E3733C33B6898317E18 /* libPods-AnotherTSProject-AnotherTSProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-AnotherTSProject-AnotherTSProjectTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		AC116638275DB280008739D3 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = AC116637275DB280008739D3 /* Fonts */; };
 		ACBB61B5274F924B00D50700 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACBB61B4274F924B00D50700 /* GoogleService-Info.plist */; };
 		ACC8B2E1274F972E002F8072 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = ACC8B2E0274F972E002F8072 /* FirebaseAnalytics */; };
 		ACC8B2E3274F972E002F8072 /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = ACC8B2E2274F972E002F8072 /* FirebaseInAppMessaging-Beta */; };
@@ -55,6 +56,7 @@
 		90B77E7CB437F89885411C1D /* Pods-AnotherTSProject-AnotherTSProjectTests.debugstaging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnotherTSProject-AnotherTSProjectTests.debugstaging.xcconfig"; path = "Target Support Files/Pods-AnotherTSProject-AnotherTSProjectTests/Pods-AnotherTSProject-AnotherTSProjectTests.debugstaging.xcconfig"; sourceTree = "<group>"; };
 		A243D4B56C95793B82874B36 /* Pods-AnotherTSProject-AnotherTSProjectTests.debugprod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnotherTSProject-AnotherTSProjectTests.debugprod.xcconfig"; path = "Target Support Files/Pods-AnotherTSProject-AnotherTSProjectTests/Pods-AnotherTSProject-AnotherTSProjectTests.debugprod.xcconfig"; sourceTree = "<group>"; };
 		ABFE59519B596E51CEFDCCC0 /* libPods-AnotherTSProject-AnotherTSProjectTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AnotherTSProject-AnotherTSProjectTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC116637275DB280008739D3 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		AC3F4479551C7E2FC9A7BF0B /* Pods-AnotherTSProject.debugstaging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnotherTSProject.debugstaging.xcconfig"; path = "Target Support Files/Pods-AnotherTSProject/Pods-AnotherTSProject.debugstaging.xcconfig"; sourceTree = "<group>"; };
 		ACBB61AF274F864100D50700 /* AnotherTSProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = AnotherTSProject.entitlements; path = AnotherTSProject/AnotherTSProject.entitlements; sourceTree = "<group>"; };
 		ACBB61B4274F924B00D50700 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				AC116637275DB280008739D3 /* Fonts */,
 				13B07FAE1A68108700A75B9A /* AnotherTSProject */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* AnotherTSProjectTests */,
@@ -296,6 +299,7 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				ACBB61B5274F924B00D50700 /* GoogleService-Info.plist in Resources */,
+				AC116638275DB280008739D3 /* Fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -90,6 +90,12 @@ If your app has an @Override on onNewIntent in `MainActivity.java` ensure that f
 
 Make sure you have installed setup Firebase correctly.
 
+**iOS**
+
+Simply download `GoogleService-Info.plist` from Firebase and put it in the ios folder inside the project's root.
+
+**Android**
+
 In `android/build.gradle`
 
 ```gradle
@@ -123,12 +129,11 @@ apply plugin: 'com.google.gms.google-services'
 
 Then put your `google-services.json` in `android/app/`.
 
-**Note:** Since the project has multiple environments, pushing notifications will work differently. Therefore, you need to add every version of ApplicationSuffixId into Firebase. The application package name must match with the one in `google-services.json`
+**Note:** Since the project has multiple environments, pushing notifications will work differently. Therefore, you need to add every version of ApplicationSuffixId into Firebase. The application package name must match with the one in `google-services.json`. Also remember to **REPLACE**, not delete the service file.
 
 **E.g:**
 
 ![image info](./pushNoti.png)
-
 ### If you don't use autolink
 
 In `android/settings.gradle`

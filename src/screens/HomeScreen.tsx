@@ -1,19 +1,10 @@
-import {
-  NativeModules,
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Platform, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect} from 'react';
 
 import PushNotification from 'react-native-push-notification';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 
-const App = () => {
-  const env = NativeModules.RNConfig.ENV;
-
+export default function HomeScreen() {
   useEffect(() => {
     if (Platform.OS === 'ios') {
       PushNotificationIOS.requestPermissions();
@@ -33,46 +24,17 @@ const App = () => {
     }
   }, []);
 
-  const handleNotification = () => {
-    PushNotification.localNotification({
-      channelId: 'test-channel',
-      title: 'AnotherTSProject',
-      message: 'OK',
-      bigText: 'Notifications worked',
-      color: 'red',
-    });
-    // PushNotificationIOS.addNotificationRequest({
-    //   title: 'OK',
-    //   body: 'OK',
-    //   id: 'open',
-    // });
-  };
-
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>This is</Text>
-      <TouchableOpacity onPress={handleNotification}>
-        <Text style={styles.envText}>{env}</Text>
-      </TouchableOpacity>
-      <Text style={styles.text}>Environment</Text>
+    <View style={styles.home}>
+      <Text>Home</Text>
     </View>
   );
-};
-
-export default App;
+}
 
 const styles = StyleSheet.create({
-  container: {
+  home: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  text: {
-    fontSize: 32,
-  },
-  envText: {
-    fontSize: 48,
-    fontWeight: 'bold',
-    color: 'red',
   },
 });

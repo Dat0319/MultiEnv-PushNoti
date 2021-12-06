@@ -7,9 +7,9 @@ project 'AnotherTSProject', {
   'DebugDev' => :debug,
   'DebugStaging' => :debug,
   'DebugProd' => :debug,
-  'ReleaseDev' => :debug,
-  'ReleaseStaging' => :debug,
-  'ReleaseProd' => :debug,
+  'ReleaseDev' => :release,
+  'ReleaseStaging' => :release,
+  'ReleaseProd' => :release,
 }
 
 debugs = ['DebugDev', 'DebugStaging', 'DebugProd']
