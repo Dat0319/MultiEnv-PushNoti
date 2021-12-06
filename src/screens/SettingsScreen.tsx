@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 
 import React from 'react';
-import Selector from '../component/LanguageSelector';
+import Selector from '~components/LanguageSelector';
 
 export default function SettingsScreen() {
   return (
@@ -14,6 +14,6 @@ export default function SettingsScreen() {
 const styles = StyleSheet.create({
   settings: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
   },
 });

@@ -238,7 +238,7 @@ Open `Info.plist`, replace `Bundle display name` with `${PRODUCT_NAME}`
 
 ![image info](./addSchemes.png)
 
-**Step 6: Change Build Config inside a Scheme**
+**Step 6: Change Build Config inside these Schemes**
 
 ![image info](./changeBuildConfig.png)
 
@@ -257,7 +257,7 @@ project 'AnotherTSProject', {
 }
 ```
 
-**Step 8: Edit Preprocess**
+**Step 8: Edit Preprocess Macros**
 
 ![image info](./editPreprocess.png)
 

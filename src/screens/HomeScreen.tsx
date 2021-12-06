@@ -3,8 +3,11 @@ import React, {useEffect} from 'react';
 
 import PushNotification from 'react-native-push-notification';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
+import {useTranslation} from 'react-i18next';
 
 export default function HomeScreen() {
+  const {t} = useTranslation();
+
   useEffect(() => {
     if (Platform.OS === 'ios') {
       PushNotificationIOS.requestPermissions();
@@ -26,7 +29,7 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.home}>
-      <Text>Home</Text>
+      <Text>{t('common:hello')}</Text>
     </View>
   );
 }

@@ -43,6 +43,10 @@
 		<string>Fonts/Ionicons.ttf</string>
 		<string>Fonts/MaterialCommunityIcons.ttf</string>
 		<string>Fonts/MaterialIcons.ttf</string>
+		<string>Fonts/SimpleLineIcons.ttf</string>
+		<string>Fonts/FontAwesome.ttf</string>
+		<string>Fonts/Feather.ttf</string>
+		<string>Fonts/EvilIcons.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
