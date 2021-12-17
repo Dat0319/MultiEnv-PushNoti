@@ -14,6 +14,7 @@ import {
 } from 'react-native-gesture-handler';
 
 import CustomHeader from '~components/Header';
+import LanguageSelector from '~components/LanguageSelector';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import PushNotification from 'react-native-push-notification';
@@ -43,6 +44,7 @@ export default function ContactsScreen() {
   return (
     <View style={styles.home}>
       <CustomHeader />
+      <LanguageSelector />
       <View style={styles.searchBarContainer}>
         <TouchableOpacity style={styles.searchBar}>
           <TextInput style={styles.txtInput} placeholder="Search friends" />
