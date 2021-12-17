@@ -24,7 +24,8 @@ export default function MessagesScreen() {
   };
 
   return (
-    <View style={styles.chat}>
+    <View style={styles.container}>
+      {/* File này nhìn cách viết là ổn rồi đó e  */}
       <CustomHeader />
       <FlatList
         data={dataDummy}
@@ -37,7 +38,7 @@ export default function MessagesScreen() {
 }
 
 const styles = StyleSheet.create({
-  chat: {
+  container: {
     flex: 1,
   },
   tab: {

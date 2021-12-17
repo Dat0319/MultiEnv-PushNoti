@@ -6,7 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useEffect, useCallback} from 'react';
 import {
   ScrollView,
   TextInput,
@@ -21,87 +21,84 @@ import PushNotification from 'react-native-push-notification';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import {dataDummy} from '~store/data';
 
+const UnitItem = ({source, name}: {source: string; name: string}) => {
+  return (
+    <TouchableOpacity style={styles.user}>
+      <View style={styles.userInfo}>
+        <Image source={{uri: source}} style={styles.image} />
+        <Text style={styles.userName}>{name}</Text>
+      </View>
+      <View style={styles.userInfo}>
+        <Ionicons
+          name="information-circle-outline"
+          size={30}
+          color="gray"
+          style={styles.icInfo}
+        />
+        <MaterialIcons name="chat" size={30} color="gray" />
+      </View>
+    </TouchableOpacity>
+  );
+};
+
 export default function ContactsScreen() {
-  useEffect(() => {
+  const checkPermissionNotification = useCallback(() => {
     if (Platform.OS === 'ios') {
       PushNotificationIOS.requestPermissions();
     } else {
-      PushNotification.createChannel(
-        {
-          channelId: 'test-channel', // (required)
-          channelName: 'My channel', // (required)
-          channelDescription: 'A channel to categorize your notifications', // (optional) default: undefined.
-          playSound: false, // (optional) default: true
-          soundName: 'default', // (optional) See `soundName` parameter of `localNotification` function
-          vibrate: true, // (optional) default: true. Creates the default vibration pattern if true.
-        },
-        (created: boolean) =>
-          console.log(`createChannel returned '${created}'`), // (optional) callback returns whether the channel was created, false means it already existed.
-      );
+      // check permission for android
     }
   }, []);
 
+  const handlePushNotification = useCallback((ttl: string, desc: string) => {
+    PushNotification.createChannel(
+      {
+        channelId: 'test-channel', // (required)
+        channelName: ttl, // (required)
+        channelDescription: desc, // (optional) default: undefined.
+        playSound: false, // (optional) default: true
+        soundName: 'default', // (optional) See `soundName` parameter of `localNotification` function
+        vibrate: true, // (optional) default: true. Creates the default vibration pattern if true.
+      },
+      (created: boolean) => console.log(`createChannel returned '${created}'`), // (optional) callback returns whether the channel was created, false means it already existed.
+    );
+  }, []);
+
+  useEffect(() => {
+    checkPermissionNotification();
+    handlePushNotification(
+      'My channel',
+      'A channel to categorize your notifications',
+    );
+  }, [checkPermissionNotification, handlePushNotification]);
+
   return (
-    <View style={styles.home}>
+    // Nên đặt tên class là general tham khảo cách đặt tên của bootstrap
+    <View style={styles.container}>
       <CustomHeader />
       {/* <LanguageSelector /> */}
       <View style={styles.searchBarContainer}>
         <TouchableOpacity style={styles.searchBar}>
-          <TextInput style={styles.txtInput} placeholder="Search friends" />
+          <TextInput style={styles.searchInput} placeholder="Search friends" />
         </TouchableOpacity>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Text style={styles.status}>Online (5)</Text>
-        <View style={styles.tab}>
+        <Text style={styles.status}>Online ({dataDummy.length})</Text>
+        <View style={styles.unit}>
+          {/* Sự khác biệt của function thường và arrow function là gì */}
           {dataDummy
-            .filter(function (item) {
-              return item.userStatus === 'online';
-            })
-            .map(function ({userName, userImage}) {
-              return (
-                <TouchableOpacity style={styles.user}>
-                  <View style={styles.userInfo}>
-                    <Image source={{uri: userImage}} style={styles.image} />
-                    <Text style={styles.userName}>{userName}</Text>
-                  </View>
-                  <View style={styles.userInfo}>
-                    <Ionicons
-                      name="information-circle-outline"
-                      size={30}
-                      color="gray"
-                      style={styles.icInfo}
-                    />
-                    <MaterialIcons name="chat" size={30} color="gray" />
-                  </View>
-                </TouchableOpacity>
-              );
-            })}
+            .filter(item => item.userStatus === 'online')
+            .map(({userName, userImage}) => (
+              <UnitItem source={userImage} name={userName} />
+            ))}
         </View>
         <Text style={styles.status}>Others</Text>
-        <View style={styles.tab}>
+        <View style={styles.unit}>
           {dataDummy
-            .filter(function (item) {
-              return item.userStatus !== 'online';
-            })
-            .map(function ({userName, userImage}) {
-              return (
-                <TouchableOpacity style={styles.user}>
-                  <View style={styles.userInfo}>
-                    <Image source={{uri: userImage}} style={styles.image} />
-                    <Text style={styles.userName}>{userName}</Text>
-                  </View>
-                  <View style={styles.userInfo}>
-                    <Ionicons
-                      name="information-circle-outline"
-                      size={30}
-                      color="gray"
-                      style={styles.icInfo}
-                    />
-                    <MaterialIcons name="chat" size={30} color="gray" />
-                  </View>
-                </TouchableOpacity>
-              );
-            })}
+            .filter(item => item.userStatus !== 'online')
+            .map(({userName, userImage}) => (
+              <UnitItem source={userImage} name={userName} />
+            ))}
         </View>
       </ScrollView>
     </View>
@@ -109,7 +106,7 @@ export default function ContactsScreen() {
 }
 
 const styles = StyleSheet.create({
-  home: {
+  container: {
     flex: 1,
   },
   searchBarContainer: {
@@ -117,9 +114,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#e2d9d9',
     height: Dimensions.get('screen').height * 0.08,
     width: Dimensions.get('screen').width,
+    // Nên viết ra một hàm responsive riêng
+    // const reponsiveHeight = (number: number) => {
+    //   return Dimensions.get('screen').height * (number / 375);
+    // }
+    // 3375 là width và height cơ bản của iphone 6 bên ios em có thể check lại
   },
   searchBar: {
     marginTop: 3,
+    // Các phần về cả margin và padding cũng responsive
     backgroundColor: 'white',
     width: '90%',
     height: '80%',
@@ -127,7 +130,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
   },
-  txtInput: {
+  searchInput: {
     flex: 1,
   },
   user: {
@@ -159,7 +162,7 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: 18,
   },
-  tab: {
+  unit: {
     borderTopWidth: 0.5,
     borderColor: 'gray',
   },
