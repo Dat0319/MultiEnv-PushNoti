@@ -1,13 +1,14 @@
 import * as React from 'react';
 
-import {StyleSheet, View} from 'react-native';
-
-import HomeScreen from '~screens/HomeScreen';
+import ContactsScreen from '~screens/ContactsScreen';
+import GroupsScreen from '~screens/GroupsScreen';
 import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import MessagesScreen from '~screens/MessagesScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import SettingsScreen from '~screens/SettingsScreen';
+import {StyleSheet} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useTranslation} from 'react-i18next';
 
@@ -25,10 +26,10 @@ export default function RootNavigator() {
           tabBarShowLabel: false,
         })}>
         <Tab.Screen
-          name="Home"
-          component={HomeScreen}
+          name="Messages"
+          component={MessagesScreen}
           options={{
-            tabBarLabel: 'Chat',
+            tabBarLabel: 'Messages',
             tabBarIcon: ({color, size}) => (
               <MaterialCommunityIcons
                 name="message-text-outline"
@@ -39,8 +40,8 @@ export default function RootNavigator() {
           }}
         />
         <Tab.Screen
-          name="A"
-          component={HomeScreen}
+          name="Groups"
+          component={GroupsScreen}
           options={{
             tabBarLabel: t('navigate:home'),
             tabBarIcon: ({color, size}) => (
@@ -54,10 +55,10 @@ export default function RootNavigator() {
         />
         <Tab.Screen
           name="B"
-          component={HomeScreen}
+          component={ContactsScreen}
           options={{
             tabBarLabel: t('navigate:home'),
-            tabBarIcon: ({color, size}) => (
+            tabBarIcon: ({size}) => (
               <LinearGradient
                 colors={['#bc1004', '#ff1100', '#f24a3d']}
                 style={styles.btnAdd}>
@@ -72,8 +73,8 @@ export default function RootNavigator() {
           }}
         />
         <Tab.Screen
-          name="C"
-          component={HomeScreen}
+          name="Contacts"
+          component={ContactsScreen}
           options={{
             tabBarLabel: t('navigate:home'),
             tabBarIcon: ({color, size}) => (

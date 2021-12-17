@@ -87,7 +87,7 @@ project.ext.envConfigFiles = [
 ]
 
 project.ext.react = [
-    enableHermes: false,  // clean and rebuild if changing
+    enableHermes: true,  // clean and rebuild if changing
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -208,6 +208,7 @@ android {
             buildConfigField "String", "ENV", '"dev"'
             resValue "string", "app_name", "AnotherTSProject Dev"
             applicationIdSuffix ".dev"
+            matchingFallbacks = ['', 'debug']
         }
         stagingRelease {
             signingConfig signingConfigs.staging
@@ -221,6 +222,7 @@ android {
         prod {
             buildConfigField "String", "ENV", '"prod"'
             resValue "string", "app_name", "AnotherTSProject"
+            matchingFallbacks = ['release']
         }
     }
 

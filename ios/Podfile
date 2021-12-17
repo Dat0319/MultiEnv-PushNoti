@@ -32,10 +32,10 @@ target 'AnotherTSProject' do
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
   # you should disable the next line.
-  use_flipper!(configurations: debugs)
+ # use_flipper!(configurations: debugs)
 
-  post_install do |installer|
-    react_native_post_install(installer)
-    __apply_Xcode_12_5_M1_post_install_workaround(installer)
-  end
+  #post_install do |installer|
+   # react_native_post_install(installer)
+ #   __apply_Xcode_12_5_M1_post_install_workaround(installer)
+  #end
 end
