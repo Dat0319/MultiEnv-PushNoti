@@ -44,7 +44,7 @@ export default function ContactsScreen() {
   return (
     <View style={styles.home}>
       <CustomHeader />
-      <LanguageSelector />
+      {/* <LanguageSelector /> */}
       <View style={styles.searchBarContainer}>
         <TouchableOpacity style={styles.searchBar}>
           <TextInput style={styles.txtInput} placeholder="Search friends" />
