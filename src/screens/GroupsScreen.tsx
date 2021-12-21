@@ -14,9 +14,10 @@ import {dataDummy} from '~store/data';
 
 export default function HomeScreen() {
   return (
-    <View style={styles.home}>
+    <View style={styles.container}>
       <CustomHeader />
       <ScrollView showsVerticalScrollIndicator={false}>
+        {/* Nên viết lại thành child component giống màn hình Contacts Screens và dùng data dummy để map ra không copy paste code  */}
         <TouchableOpacity style={styles.group}>
           <Text style={styles.groupName}>Gotham City Police Department</Text>
           <View style={styles.members}>
@@ -38,6 +39,7 @@ export default function HomeScreen() {
               })}
           </View>
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.group}>
           <Text style={styles.groupName}>Wayne Enterprises</Text>
           <View style={styles.members}>
@@ -59,6 +61,7 @@ export default function HomeScreen() {
               })}
           </View>
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.group}>
           <Text style={styles.groupName}>Falcone Crime Family</Text>
           <View style={styles.members}>
@@ -86,7 +89,7 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  home: {
+  container: {
     flex: 1,
   },
   group: {

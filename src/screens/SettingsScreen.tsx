@@ -11,6 +11,9 @@ interface DataType {
   note?: string;
 }
 
+// FIle này viết tốt nhá cần xem lại bên contact screen đối chiếu lại xem
+// Em xem lại có gì chưa hiểu thì hỏi a sau nhá.
+
 export default function SettingsScreen() {
   const options = useMemo(
     () => [
