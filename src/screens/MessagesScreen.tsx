@@ -49,6 +49,7 @@ export default function MessagesScreen() {
             <Progress.Bar
               progress={0.65}
               width={Dimensions.get('screen').width * 0.85}
+              color={'red'}
             />
             <View style={styles.overview}>
               <Text style={styles.duration}>24:15:05</Text>
@@ -103,29 +104,18 @@ export default function MessagesScreen() {
             </Text>
             <Text style={styles.episodes}>Episodes (10)</Text>
             {dataDummy.map(item => (
-              <View
+              <TouchableOpacity
+                activeOpacity={0.8}
                 key={item.id}
-                style={{
-                  backgroundColor: 'black',
-                  marginBottom: 15,
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  padding: 10,
-                }}>
-                <TouchableOpacity
-                  style={{
-                    backgroundColor: 'blue',
-                    marginRight: 10,
-                    padding: 10,
-                    borderRadius: 20,
-                  }}>
+                style={styles.unit}>
+                <TouchableOpacity activeOpacity={0.8} style={styles.btnPlay}>
                   <Ionicons name="md-play-outline" color={'white'} size={20} />
                 </TouchableOpacity>
                 <View>
                   <Text style={styles.duration}>{item.userName}</Text>
                   <Text style={styles.dislikeNum}>{item.message}</Text>
                 </View>
-              </View>
+              </TouchableOpacity>
             ))}
           </View>
         </ImageBackground>
@@ -135,8 +125,22 @@ export default function MessagesScreen() {
 }
 
 const styles = StyleSheet.create({
+  btnPlay: {
+    backgroundColor: 'red',
+    marginRight: 10,
+    padding: 10,
+    borderRadius: 20,
+  },
+  unit: {
+    backgroundColor: 'black',
+    marginBottom: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+  },
   container: {
     flex: 1,
+    backgroundColor: 'rgba(53, 4, 47, 1)',
   },
   tab: {
     flexDirection: 'row',

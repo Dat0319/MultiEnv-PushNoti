@@ -51,7 +51,7 @@ export default function SettingsScreen() {
   const renderItem = useCallback(({item}: {item: DataType}) => {
     return (
       <>
-        <TouchableOpacity style={styles.options}>
+        <TouchableOpacity activeOpacity={0.8} style={styles.options}>
           {item.title === 'Delete account' ? (
             <Text style={[styles.title, styles.titleDel]}>{item.title}</Text>
           ) : (

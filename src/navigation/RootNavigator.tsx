@@ -21,9 +21,11 @@ export default function RootNavigator() {
       <Tab.Navigator
         screenOptions={() => ({
           tabBarActiveTintColor: 'red',
-          tabBarInactiveTintColor: 'gray',
+          tabBarInactiveTintColor: 'white',
           headerShown: false,
           tabBarShowLabel: false,
+          tabBarInactiveBackgroundColor: 'rgba(53, 4, 47, 1)',
+          tabBarActiveBackgroundColor: 'black',
         })}>
         <Tab.Screen
           name="Messages"
