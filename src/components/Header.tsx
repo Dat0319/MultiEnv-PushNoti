@@ -8,37 +8,37 @@ const CustomHeader = () => {
   const route = useRoute();
 
   const renderHeader = (routeName: string) => {
-    let Icon, icName, icColor, icSize, screenName;
+    let icName = '',
+      icColor,
+      icSize,
+      screenName;
     switch (routeName) {
       case 'Groups':
-        Icon = View;
         screenName = 'pcast';
         break;
       case 'Messages':
-        Icon = Ionicons;
         icName = 'arrow-back';
         icColor = 'white';
         icSize = 23;
         break;
       case 'Contacts':
-        Icon = View;
+        screenName = 'pcast';
         break;
       default:
-        Icon = View;
         break;
     }
     return (
       <>
         <View style={styles.headerLeft}>
-          {routeName === 'Groups' ? (
+          {routeName === 'Messages' ? (
+            <Ionicons name={icName} color={icColor} size={icSize} />
+          ) : (
             <Image
               source={{
                 uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa8TnQPf7Y6McEsOk4S0OP0F5rrbKktPYZ6w&usqp=CAU',
               }}
               style={styles.imgBanner}
             />
-          ) : (
-            <Icon name={icName} color={icColor} size={icSize} />
           )}
           <Text style={styles.txtBanner}>{screenName}</Text>
         </View>

@@ -1,171 +1,201 @@
 import {
   Dimensions,
   Image,
-  Platform,
+  ImageBackground,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useEffect} from 'react';
-import {
-  ScrollView,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native-gesture-handler';
+import {FlatList, ScrollView, TextInput} from 'react-native-gesture-handler';
 
 import CustomHeader from '~components/Header';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import LinearGradient from 'react-native-linear-gradient';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import PushNotification from 'react-native-push-notification';
-import PushNotificationIOS from '@react-native-community/push-notification-ios';
+import React from 'react';
 import {dataDummy} from '~store/data';
 
-export default function ContactsScreen() {
-  useEffect(() => {
-    if (Platform.OS === 'ios') {
-      PushNotificationIOS.requestPermissions();
-    } else {
-      PushNotification.createChannel(
-        {
-          channelId: 'test-channel', // (required)
-          channelName: 'My channel', // (required)
-          channelDescription: 'A channel to categorize your notifications', // (optional) default: undefined.
-          playSound: false, // (optional) default: true
-          soundName: 'default', // (optional) See `soundName` parameter of `localNotification` function
-          vibrate: true, // (optional) default: true. Creates the default vibration pattern if true.
-        },
-        (created: boolean) =>
-          console.log(`createChannel returned '${created}'`), // (optional) callback returns whether the channel was created, false means it already existed.
-      );
-    }
-  }, []);
-
+export default function HomeScreen() {
   return (
     <View style={styles.home}>
       <CustomHeader />
-      <View style={styles.searchBarContainer}>
-        <TouchableOpacity style={styles.searchBar}>
-          <TextInput style={styles.txtInput} placeholder="Search friends" />
-        </TouchableOpacity>
+      <View style={styles.container}>
+        <View style={{flex: 1}}>
+          <Text style={styles.browse}>Browse</Text>
+          <View style={styles.searchBar}>
+            <TextInput style={styles.txtInput} defaultValue="Robert" />
+            <Ionicons name="search" size={20} color="gray" />
+          </View>
+          <ScrollView
+            horizontal={true}
+            style={styles.browsingList}
+            showsHorizontalScrollIndicator={false}>
+            <View style={styles.categories}>
+              <TouchableOpacity style={styles.categoriesButton}>
+                <MaterialIcons
+                  name="category"
+                  color="white"
+                  size={20}
+                  style={styles.iconInactive}
+                />
+              </TouchableOpacity>
+              <Text style={styles.optionInactive}>Categories</Text>
+            </View>
+            <View style={styles.categories}>
+              <TouchableOpacity style={styles.categoriesButton}>
+                <Ionicons
+                  name="globe"
+                  color="white"
+                  size={20}
+                  style={styles.iconInactive}
+                />
+              </TouchableOpacity>
+              <Text style={styles.optionInactive}>Topics</Text>
+            </View>
+            <View style={styles.categories}>
+              <TouchableOpacity style={styles.categoriesButton}>
+                <Ionicons
+                  name="sad"
+                  color="red"
+                  size={20}
+                  style={styles.iconInactive}
+                />
+              </TouchableOpacity>
+              <Text style={styles.optionActive}>Authors</Text>
+            </View>
+            <View style={styles.categories}>
+              <TouchableOpacity style={styles.categoriesButton}>
+                <MaterialCommunityIcons
+                  name="microphone"
+                  color="white"
+                  size={20}
+                  style={styles.iconInactive}
+                />
+              </TouchableOpacity>
+              <Text style={styles.optionInactive}>Podcasts</Text>
+            </View>
+            <View style={styles.categories}>
+              <TouchableOpacity style={styles.categoriesButton}>
+                <Ionicons
+                  name="albums"
+                  color="white"
+                  size={20}
+                  style={styles.iconInactive}
+                />
+              </TouchableOpacity>
+              <Text style={styles.optionInactive}>Episodes</Text>
+            </View>
+          </ScrollView>
+        </View>
+        <View style={{flex: 1}}>
+          <Text style={styles.authorsList}>Authors</Text>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            {dataDummy.map(item => (
+              <TouchableOpacity activeOpacity={0.8} style={styles.unit}>
+                <Image
+                  source={{uri: item.userImage}}
+                  style={styles.authorImg}
+                />
+                <View style={styles.authorInfo}>
+                  <Text style={styles.authorName}>{item.userName}</Text>
+                  <Text style={styles.authorName}>{item.message}</Text>
+                </View>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </View>
       </View>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <Text style={styles.status}>Online (5)</Text>
-        <View style={styles.tab}>
-          {dataDummy
-            .filter(function (item) {
-              return item.userStatus === 'online';
-            })
-            .map(function ({userName, userImage}) {
-              return (
-                <TouchableOpacity style={styles.user}>
-                  <View style={styles.userInfo}>
-                    <Image source={{uri: userImage}} style={styles.image} />
-                    <Text style={styles.userName}>{userName}</Text>
-                  </View>
-                  <View style={styles.userInfo}>
-                    <Ionicons
-                      name="information-circle-outline"
-                      size={30}
-                      color="gray"
-                      style={styles.icInfo}
-                    />
-                    <MaterialIcons name="chat" size={30} color="gray" />
-                  </View>
-                </TouchableOpacity>
-              );
-            })}
-        </View>
-        <Text style={styles.status}>Others</Text>
-        <View style={styles.tab}>
-          {dataDummy
-            .filter(function (item) {
-              return item.userStatus !== 'online';
-            })
-            .map(function ({userName, userImage}) {
-              return (
-                <TouchableOpacity style={styles.user}>
-                  <View style={styles.userInfo}>
-                    <Image source={{uri: userImage}} style={styles.image} />
-                    <Text style={styles.userName}>{userName}</Text>
-                  </View>
-                  <View style={styles.userInfo}>
-                    <Ionicons
-                      name="information-circle-outline"
-                      size={30}
-                      color="gray"
-                      style={styles.icInfo}
-                    />
-                    <MaterialIcons name="chat" size={30} color="gray" />
-                  </View>
-                </TouchableOpacity>
-              );
-            })}
-        </View>
-      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  home: {
-    flex: 1,
+  unit: {
+    flexDirection: 'row',
+    height: Dimensions.get('screen').height * 0.17,
+    marginTop: '10%',
   },
-  searchBarContainer: {
-    justifyContent: 'center',
-    backgroundColor: '#e2d9d9',
-    height: Dimensions.get('screen').height * 0.08,
-    width: Dimensions.get('screen').width,
+  authorInfo: {
+    alignSelf: 'flex-end',
+    backgroundColor: 'black',
+    width: '100%',
+    padding: '8%',
+    borderBottomRightRadius: 0,
+    borderRadius: Math.round((Dimensions.get('screen').height * 0.05) / 2),
   },
-  searchBar: {
-    marginTop: 3,
-    backgroundColor: 'white',
-    width: '90%',
-    height: '80%',
-    borderRadius: 5,
+  authorName: {
+    textAlign: 'right',
+    color: 'white',
+  },
+  authorImg: {
+    width: '50%',
+    height: '100%',
+    borderRadius: Math.round((Dimensions.get('screen').height * 0.05) / 2),
+    marginLeft: '3%',
+    position: 'absolute',
+    zIndex: 1,
+    borderBottomRightRadius: 0,
+    borderBottomLeftRadius: 0,
+  },
+  authorsList: {
+    marginTop: '10%',
+    color: 'gray',
+    fontSize: 18,
+    marginBottom: '2%',
+  },
+  optionActive: {
+    color: 'red',
+    marginTop: 10,
+  },
+  optionInactive: {
+    color: 'gray',
+    marginTop: 10,
+  },
+  iconInactive: {
+    padding: 20,
+  },
+  categoriesButton: {
+    backgroundColor: 'rgba(73, 56, 71, 1)',
+    borderRadius: 40,
+  },
+  categories: {
     alignItems: 'center',
-    alignSelf: 'center',
+    marginRight: 25,
+  },
+  browsingList: {
+    flexDirection: 'row',
+    marginTop: '10%',
   },
   txtInput: {
-    flex: 1,
+    color: 'white',
+    width: '94%',
   },
-  user: {
+  searchBar: {
+    marginTop: '10%',
     flexDirection: 'row',
-    backgroundColor: 'white',
-    alignItems: 'center',
-    padding: 10,
-    borderBottomWidth: 0.5,
-    borderColor: 'gray',
+    width: '100%',
+    backgroundColor: 'black',
+    padding: '4%',
+    borderRadius: 10,
     justifyContent: 'space-between',
   },
-  userImage: {
-    width: 40,
-    height: 40,
-    marginVertical: 15,
-    marginHorizontal: 5,
+  browse: {
+    color: 'white',
+    fontSize: 40,
+    fontWeight: 'bold',
+    marginTop: '5%',
   },
-  status: {
-    color: 'gray',
-    marginVertical: 8,
-    marginHorizontal: 10,
+  container: {
+    marginHorizontal: '8%',
+    flex: 1,
   },
-  image: {
-    borderRadius: 20,
-    width: 40,
-    height: 40,
-    marginRight: 15,
+  scroll: {
+    flex: 1,
   },
-  userName: {
-    fontSize: 18,
-  },
-  tab: {
-    borderTopWidth: 0.5,
-    borderColor: 'gray',
-  },
-  userInfo: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  icInfo: {
-    marginRight: 10,
+  home: {
+    flex: 1,
+    backgroundColor: 'rgba(53, 4, 47, 1)',
   },
 });

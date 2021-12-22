@@ -100,6 +100,7 @@ export default function HomeScreen() {
               );
             }}
           />
+          <View style={styles.headerLine} />
           <Text style={styles.listenPodcasts}>Podcasts authors</Text>
           <View style={styles.filter}>
             <Text style={styles.filterInactive}>Recent</Text>
@@ -135,6 +136,10 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  headerLine: {
+    height: 0.5,
+    backgroundColor: 'gray',
+  },
   itemPodcastAuthorName: {
     color: 'white',
     marginTop: '8%',
@@ -153,7 +158,6 @@ const styles = StyleSheet.create({
     width: Dimensions.get('screen').width * 0.32,
     height: '40%',
     marginRight: 20,
-    alignItems: 'center',
   },
   itemListenAuthor: {
     color: 'white',
@@ -184,7 +188,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   podcasts: {
-    marginHorizontal: '12%',
+    marginHorizontal: '8%',
     height: Dimensions.get('screen').height,
   },
   filter: {
