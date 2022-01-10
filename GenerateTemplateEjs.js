@@ -95,6 +95,18 @@ options = {
     organization: {
       name: 'NAME OF ORGANIZATION',
     },
+    userCreator: {
+      anonymous: false,
+      id: '61d7a62d79d10a0e713576a7',
+      email: 'DATTRANDUY@VMODEV.COM',
+      organization: 'THANG TEST',
+      name: 'TRAN DUY DAT',
+      language: '',
+      hash: '454a7664414bd8c6bd8cf4e429f7f005',
+    },
+    urls: param('urls'),
+    otp: 'DIGITAL_123456',
+    async: true,
   },
   recipient: {
     anonymous: false,
@@ -182,7 +194,7 @@ function render() {
         .replace('/html.ejs', '')}.html`,
       command = `open -a "Google Chrome" ${url}`;
 
-    exec(command);
+    // exec(command);
   });
 
   return true;
